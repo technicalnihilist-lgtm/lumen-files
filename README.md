@@ -8,7 +8,7 @@ A liquid-glass file manager. One HTML file is the whole UI; the Android app is a
 
 ## Download
 
-**[⬇ Download Lumen-Files.apk](https://github.com/technicalnihilist-lgtm/lumen-files/releases/latest/download/Lumen-Files.apk)** — Android 7.0 (API 24) and above, ~122 KB, no permissions. (Also committed in this repo as [`Lumen-Files.apk`](Lumen-Files.apk), and on the [releases page](https://github.com/technicalnihilist-lgtm/lumen-files/releases).)
+**[⬇ Download Lumen-Files.apk](https://github.com/technicalnihilist-lgtm/lumen-files/releases/latest/download/Lumen-Files.apk)** — Android 7.0 (API 24) and above, ~122 KB, one permission: **storage**. (Also committed in this repo as [`Lumen-Files.apk`](Lumen-Files.apk), and on the [releases page](https://github.com/technicalnihilist-lgtm/lumen-files/releases).)
 
 1. Copy the APK to your phone and tap it.
 2. Allow "install unknown apps" for your browser or file manager when Android asks.
@@ -34,9 +34,21 @@ Or just open [`index.html`](index.html) in any browser — same app, no install.
 - **Persistence** — the file tree lives in `localStorage`, so folders and files you create survive a restart (and a device reboot).
 - **Android back key** — closes the dialog, menu, drawer, selection or search first, steps up one folder next, and leaves the app only when there is nothing left to close.
 
+## Permission
+
+Exactly one: **storage**. Nothing else — no internet, no camera, no contacts, no location, no ads.
+
+| Declared | Covers |
+|---|---|
+| `READ_EXTERNAL_STORAGE` (`maxSdkVersion=32`) | Android 6 – 12 |
+| `WRITE_EXTERNAL_STORAGE` (`maxSdkVersion=29`) | Android 6 – 9 |
+| `MANAGE_EXTERNAL_STORAGE` | Android 11+, as the *All files access* toggle |
+
+On Android 6–12 the read permission is asked once at first launch. On Android 11+ you can grant *All files access* yourself under **Settings → Apps → Lumen Files → Special app access**.
+
 ## What is not here
 
-The app manages its own tree — it does not read your phone's real `DCIM`, `Download` or `Pictures` folders. Reading the actual filesystem needs a native storage bridge (`MANAGE_EXTERNAL_STORAGE` or SAF), which is deliberately not wired in: the APK requests **zero permissions**.
+The app still manages its own tree — it does not read your phone's real `DCIM`, `Download` or `Pictures` folders yet. The storage permission above is declared and requested, but the native bridge that would map the real filesystem onto this UI is not wired in. When it is, the interface stays exactly as it is now.
 
 ## Build the APK yourself
 
