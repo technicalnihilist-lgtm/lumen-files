@@ -1,0 +1,11 @@
+# build output
+android/build/
+android/app/src/main/assets/index.html
+android/app/src/main/res/drawable/
+android/app/src/main/res/mipmap-*/
+
+# local toolchain + signing key
+jdk/
+sdk/
+*.jks
+*.keystore
