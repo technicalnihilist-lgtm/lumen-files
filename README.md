@@ -22,12 +22,17 @@ Or just open [`index.html`](index.html) in any browser — same app, no install.
 |---|---|---|---|
 | <img src="screenshots/screenshot-1-home.png" width="200"> | <img src="screenshots/screenshot-2-folder.png" width="200"> | <img src="screenshots/screenshot-3-grid.png" width="200"> | <img src="screenshots/screenshot-4-settings.png" width="200"> |
 
+The **+** menu — new folder, new text file, import files:
+
+<img src="screenshots/screenshot-5-import.png" width="260">
+
 ## What it does
 
 - **Browse** — list and grid view, breadcrumb path, folder-first sorting by name, date or size.
 - **Search** — searches the whole storage tree, not just the current folder.
 - **Select** — long-press a row to start selecting, tap to add or remove, then copy, move or delete. Multi-item delete has a working undo.
 - **Create / rename** — new folder, new file, rename with automatic `name (1)` de-duplication. Enter confirms, Escape cancels.
+- **Import files** — the **+** menu opens the system file picker (multi-select, any type). Picked files land in the current folder with their real name, size and date, keep their bytes in IndexedDB, and stay there across restarts. Duplicate names get a ` (1)` suffix; deleting an imported file drops its stored bytes too.
 - **Copy / paste** — real clipboard bar with *Paste here* and *Cancel*; a folder can't be pasted into itself.
 - **Categories** — Images, Videos, Audio, Documents and Downloads views from the drawer.
 - **Glass settings** — transparency, liquid effect, sound volume and pitch, transition speed, 19 folder transition styles, animated-glass and tap-sound switches. All of it is remembered.
