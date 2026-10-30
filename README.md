@@ -8,7 +8,7 @@ A liquid-glass file manager. One HTML file is the whole UI; the Android app is a
 
 ## Download
 
-**[⬇ Lumen-Files.apk](Lumen-Files.apk)** — Android 7.0 (API 24) and above, ~122 KB, no permissions.
+**[⬇ Download Lumen-Files.apk](https://github.com/technicalnihilist-lgtm/lumen-files/releases/latest/download/Lumen-Files.apk)** — Android 7.0 (API 24) and above, ~122 KB, no permissions. (Also committed in this repo as [`Lumen-Files.apk`](Lumen-Files.apk), and on the [releases page](https://github.com/technicalnihilist-lgtm/lumen-files/releases).)
 
 1. Copy the APK to your phone and tap it.
 2. Allow "install unknown apps" for your browser or file manager when Android asks.
