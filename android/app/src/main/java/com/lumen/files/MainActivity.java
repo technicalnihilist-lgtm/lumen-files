@@ -3,12 +3,16 @@ package com.lumen.files;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -24,6 +28,8 @@ public class MainActivity extends Activity {
 
     private static final String START_URL = "file:///android_asset/index.html";
     private static final int REQ_STORAGE = 1001;
+    private static final int REQ_FILE = 1002;
+    private ValueCallback<Uri[]> filePicker;
     private WebView web;
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -49,6 +55,27 @@ public class MainActivity extends Activity {
         s.setDisplayZoomControls(false);
         s.setTextZoom(100);
         s.setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+        // lets the app's "Import files" option open the system file picker
+        web.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onShowFileChooser(WebView view, ValueCallback<Uri[]> callback,
+                                             FileChooserParams params) {
+                if (filePicker != null) {
+                    filePicker.onReceiveValue(null);
+                }
+                filePicker = callback;
+                Intent intent = params.createIntent();
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                try {
+                    startActivityForResult(intent, REQ_FILE);
+                    return true;
+                } catch (Exception e) {
+                    filePicker = null;
+                    return false;
+                }
+            }
+        });
 
         web.setWebViewClient(new WebViewClient() {
             @Override
@@ -81,6 +108,30 @@ public class MainActivity extends Activity {
                                Manifest.permission.WRITE_EXTERNAL_STORAGE}
                 : new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
         requestPermissions(wanted, REQ_STORAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQ_FILE) {
+            Uri[] picked = null;
+            if (resultCode == RESULT_OK && data != null) {
+                if (data.getClipData() != null) {
+                    ClipData clip = data.getClipData();
+                    picked = new Uri[clip.getItemCount()];
+                    for (int i = 0; i < clip.getItemCount(); i++) {
+                        picked[i] = clip.getItemAt(i).getUri();
+                    }
+                } else if (data.getData() != null) {
+                    picked = new Uri[]{data.getData()};
+                }
+            }
+            if (filePicker != null) {
+                filePicker.onReceiveValue(picked);
+                filePicker = null;
+            }
+            return;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
