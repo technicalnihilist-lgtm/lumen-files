@@ -1,8 +1,11 @@
 package com.lumen.files;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.ValueCallback;
@@ -20,6 +23,7 @@ import android.webkit.WebViewClient;
 public class MainActivity extends Activity {
 
     private static final String START_URL = "file:///android_asset/index.html";
+    private static final int REQ_STORAGE = 1001;
     private WebView web;
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -59,6 +63,30 @@ public class MainActivity extends Activity {
             web.loadUrl(START_URL);
         }
         setContentView(web);
+
+        askForStorage();
+    }
+
+    /** The one permission this app declares: storage. Asked once, never nagged. */
+    private void askForStorage() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Build.VERSION.SDK_INT > 32) {
+            return;   // 30+ is covered by the "All files access" toggle, 33+ has no runtime dialog
+        }
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        String[] wanted = Build.VERSION.SDK_INT <= Build.VERSION_CODES.P
+                ? new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                               Manifest.permission.WRITE_EXTERNAL_STORAGE}
+                : new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
+        requestPermissions(wanted, REQ_STORAGE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int code, String[] permissions, int[] results) {
+        super.onRequestPermissionsResult(code, permissions, results);
+        // granted or not, the UI is unaffected - nothing here blocks the app
     }
 
     @Override
