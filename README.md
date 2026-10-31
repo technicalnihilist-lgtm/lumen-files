@@ -26,9 +26,9 @@ The **+** menu — new folder, new text file, import files:
 
 <img src="screenshots/screenshot-5-import.png" width="260">
 
-Glass settings, with the new **Bounce depth** slider:
+Glass settings, with the **Bounce depth**, **4D depth** and **Parallax** sliders:
 
-<img src="screenshots/screenshot-6-depth.png" width="260">
+<img src="screenshots/screenshot-6-depth.png" width="260"> <img src="screenshots/screenshot-7-depth.png" width="260">
 
 ## What it does
 
@@ -42,6 +42,8 @@ Glass settings, with the new **Bounce depth** slider:
 - **Glass settings** — transparency, liquid effect, sound volume and pitch, transition speed, bounce depth, 20 folder transition styles, animated-glass and tap-sound switches. All of it is remembered.
 - **4D bounce** — the new transition style: the list tilts into perspective and every row flies in from depth (`translateZ` + `rotateX` + blur) with a staggered overshoot, then settles flat. Works both opening and closing a folder.
 - **Bounce depth** — one slider (0–100%) sets how far the 4D bounce comes from and how hard every tap squashes. At 60% it matches the original feel; at 0% it is flat; at 100% it is exaggerated.
+- **4D depth** — the list becomes a curved depth field: each row is projected onto a `translateZ` + `rotateX` + `scale` plane from its distance to the middle of the screen, with a touch of blur at the edges. Re-projected on every scroll frame (rAF), so it stays glued to your finger. 45% by default, 0% turns it off.
+- **Parallax** — the gradient layer lags behind the list as you scroll (it moves at a fraction of the list speed) and follows a mouse pointer on desktop. 40% by default, 0% turns it off.
 - **Persistence** — the file tree lives in `localStorage`, so folders and files you create survive a restart (and a device reboot).
 - **Android back key** — closes the dialog, menu, drawer, selection or search first, steps up one folder next, and leaves the app only when there is nothing left to close.
 
