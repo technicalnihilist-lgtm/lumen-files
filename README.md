@@ -26,6 +26,10 @@ The **+** menu — new folder, new text file, import files:
 
 <img src="screenshots/screenshot-5-import.png" width="260">
 
+Glass settings, with the new **Bounce depth** slider:
+
+<img src="screenshots/screenshot-6-depth.png" width="260">
+
 ## What it does
 
 - **Browse** — list and grid view, breadcrumb path, folder-first sorting by name, date or size.
@@ -35,7 +39,9 @@ The **+** menu — new folder, new text file, import files:
 - **Import files** — the **+** menu opens the system file picker (multi-select, any type). Picked files land in the current folder with their real name, size and date, keep their bytes in IndexedDB, and stay there across restarts. Duplicate names get a ` (1)` suffix; deleting an imported file drops its stored bytes too.
 - **Copy / paste** — real clipboard bar with *Paste here* and *Cancel*; a folder can't be pasted into itself.
 - **Categories** — Images, Videos, Audio, Documents and Downloads views from the drawer.
-- **Glass settings** — transparency, liquid effect, sound volume and pitch, transition speed, 19 folder transition styles, animated-glass and tap-sound switches. All of it is remembered.
+- **Glass settings** — transparency, liquid effect, sound volume and pitch, transition speed, bounce depth, 20 folder transition styles, animated-glass and tap-sound switches. All of it is remembered.
+- **4D bounce** — the new transition style: the list tilts into perspective and every row flies in from depth (`translateZ` + `rotateX` + blur) with a staggered overshoot, then settles flat. Works both opening and closing a folder.
+- **Bounce depth** — one slider (0–100%) sets how far the 4D bounce comes from and how hard every tap squashes. At 60% it matches the original feel; at 0% it is flat; at 100% it is exaggerated.
 - **Persistence** — the file tree lives in `localStorage`, so folders and files you create survive a restart (and a device reboot).
 - **Android back key** — closes the dialog, menu, drawer, selection or search first, steps up one folder next, and leaves the app only when there is nothing left to close.
 
