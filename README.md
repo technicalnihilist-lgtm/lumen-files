@@ -1,10 +1,10 @@
 <div align="center">
 
+<img src="assets/icon.png" width="96" height="96" alt="Lumen Files icon">
+
+<img src="assets/banner.svg" alt="Lumen Files — liquid-glass file manager. Single-file web app + Android APK (WebView shell). Same…">
+
 <a href="https://github.com/technicalnihilist-lgtm/lumen-files/stargazers"><img src="https://img.shields.io/badge/stars-4-5A31F4?style=for-the-badge&logo=github&logoColor=white" alt="stars: 4"></a>&nbsp;<a href="https://github.com/technicalnihilist-lgtm/lumen-files/network/members"><img src="https://img.shields.io/badge/forks-0-3FB950?style=for-the-badge" alt="forks: 0"></a>
-
-<h3>Lumen Files — liquid-glass file manager. Single-file web app + Android APK (WebView shell). Same…</h3>
-
-<img src="https://img.shields.io/badge/HTML-5865F2?style=flat-square" alt="HTML"> <img src="https://img.shields.io/badge/Android-3B3F4A?style=flat-square" alt="Android"> <img src="https://img.shields.io/badge/File%20Manager-3FB950?style=flat-square" alt="File Manager"> <img src="https://img.shields.io/badge/Glassmorphism-EC4899?style=flat-square" alt="Glassmorphism">
 
 <a href="https://github.com/technicalnihilist-lgtm/lumen-files/releases/latest"><img src="https://img.shields.io/badge/DOWNLOAD-APK-6D5AE6?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"></a>
 
@@ -16,13 +16,7 @@
 
 <a href="https://github.com/technicalnihilist-lgtm/lumen-files/releases/latest"><img src="https://img.shields.io/badge/VERSION-v1.4-6D5AE6?style=for-the-badge" alt="VERSION: v1.4"></a> <img src="https://img.shields.io/badge/DOWNLOADS-337-3FB950?style=for-the-badge" alt="DOWNLOADS: 337"> <a href="https://github.com/technicalnihilist-lgtm/lumen-files/releases"><img src="https://img.shields.io/badge/RELEASES-GITHUB-EC4899?style=for-the-badge&logo=github&logoColor=white" alt="RELEASES: GITHUB"></a>
 
-<h4>Get it from</h4>
-
-<a href="https://github.com/technicalnihilist-lgtm/lumen-files/releases"><img src="https://img.shields.io/badge/GitHub-Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases"></a> <a href="https://github.com/technicalnihilist-lgtm/lumen-files/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/Source-ZIP-0EA5E9?style=for-the-badge&logo=github&logoColor=white" alt="Source ZIP"></a>
-
 </div>
-
----
 
 ---
 
